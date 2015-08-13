@@ -97,9 +97,22 @@ void f_parse_command_line(int argc, char *argv[])
 	opt_stats = 1;
 }
 
-void f_parse_config_file(void)
+void f_parse_config_file(char *cfg_file)
 {
+	FILE *cfg;
+	if((cfg = fopen(cfg_file, "r")) == NULL)
+	{
+		printf("cannot open %s\n", cfg_file);
+		return;
+	}
 
+	char cmd[MAX_CMD_SIZE];
+
+	//fgets(cmd, MAX_CMD_SIZE, cfg);
+	//printf("CMD: %s", cmd);
+	
+	
+	fclose(cfg);
 }
 
 
@@ -289,7 +302,7 @@ int main(int argc, char *argv[])
 {
 	char buffer[1024];
 	
-	f_parse_config_file();
+	f_parse_config_file("default.cfg");
 	f_parse_command_line(argc, argv);
 
 	if(!f_server_init())

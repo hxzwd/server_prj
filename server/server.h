@@ -22,12 +22,13 @@
 #define SERVER_INET_ADDR_PARAM "0.0.0.0"
 #define SERVER_REQUEST_BUFFER_SIZE 64536
 #define SERVER_MIDDLE_BUFFER_SIZE 64
+#define MAX_CMD_SIZE 64
 
 void f_server_close(void);
 int f_server_init(void);
 void f_log(char *, int);
 void f_parse_command_line(int, char **);
-void f_parse_config_file(void);
+void f_parse_config_file(char *);
 void f_parse_request_buffer(char *);
 unsigned _stdcall f_thread_function(void *);
 
